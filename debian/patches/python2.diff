@@ -1,0 +1,49 @@
+Index: b/openpgm/pgm/configure.ac
+===================================================================
+--- a/openpgm/pgm/configure.ac
++++ b/openpgm/pgm/configure.ac
+@@ -28,7 +28,7 @@ AC_PROG_CC
+ AC_PROG_CC_C99
+ AC_PROG_LIBTOOL
+ AC_PATH_PROG(PERL, perl)
+-AC_PATH_PROG(PYTHON, python)
++AC_PATH_PROG(PYTHON, python2)
+ 
+ # nb: earliest verifiable version is 2.2.
+ m4_ifdef([LT_PREREQ], [LT_PREREQ([2.2])])
+Index: b/openpgm/pgm/SConscript.libpgm
+===================================================================
+--- a/openpgm/pgm/SConscript.libpgm
++++ b/openpgm/pgm/SConscript.libpgm
+@@ -60,7 +60,7 @@ e.Append(CCFLAGS = '-DGETTEXT_PACKAGE=\'
+ e.Command ('galois_tables.c', 'galois_generator.pl', "perl $SOURCE > $TARGET");
+ 
+ # Version stamping
+-e.Command ('version.c', 'version_generator.py', "python $SOURCE > $TARGET");
++e.Command ('version.c', 'version_generator.py', "python2 $SOURCE > $TARGET");
+ e.Depends ('version.c', src);
+ src += ['version.c'];
+ 
+Index: b/openpgm/pgm/SConscript.libpgm89
+===================================================================
+--- a/openpgm/pgm/SConscript.libpgm89
++++ b/openpgm/pgm/SConscript.libpgm89
+@@ -61,7 +61,7 @@ e.Append(CCFLAGS = '-DGETTEXT_PACKAGE=\'
+ e.Command ('galois_tables.c', 'galois_generator.pl', "perl $SOURCE > $TARGET");
+ 
+ # Version stamping
+-e.Command ('version.c', 'version_generator.py', "python $SOURCE > $TARGET");
++e.Command ('version.c', 'version_generator.py', "python2 $SOURCE > $TARGET");
+ e.Depends ('version.c', src);
+ src += ['version.c'];
+ 
+Index: b/openpgm/pgm/version_generator.py
+===================================================================
+--- a/openpgm/pgm/version_generator.py
++++ b/openpgm/pgm/version_generator.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ import os
+ import platform

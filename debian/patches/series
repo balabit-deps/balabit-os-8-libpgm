@@ -1,0 +1,6 @@
+hurd-ftbfs-fix.patch
+force-running-benchmark-in-case-tsc_mhz-returns-0.patch
+support_source_date_epoch.patch
+pkg-config-do-not-add-I-to-non-existing-directory.patch
+reproducible-architecture.patch
+python2.diff
